@@ -1160,6 +1160,11 @@
       }
       .panel-links a {
         position: relative;
+        -webkit-user-drag: none;
+      }
+      .rail a,
+      .rail img {
+        -webkit-user-drag: none;
       }
       .panel-links a::after {
         content: "";
@@ -1599,7 +1604,7 @@
               <span>· Graduate School</span>
             </h3>
             <p class="xp-meta">
-              University of North Texas — 2023 – 2025 · GPA 3.9/4.0
+              University of North Texas — 2024 – 2025 · GPA 3.9/4.0
             </p>
             <ul>
               <li>
@@ -1683,45 +1688,59 @@
           <div class="rail" id="rail">
             <article class="panel -ai" data-view>
               <span class="panel-idx" aria-hidden="true">01</span>
-              <span class="panel-tag">AI / Retrieval</span>
-              <h3>Advanced RAG &amp; Semantic Search Pipeline</h3>
+              <span class="panel-tag"
+                >AI Engineering / Search Architecture</span
+              >
+              <h3>Production RAG & Hybrid Search Engine</h3>
               <dl>
                 <div>
                   <dt>Problem</dt>
                   <dd>
-                    Teams pick vector stacks on vibes. Which combination of
-                    store, orchestration, and retrieval strategy actually earns
-                    its complexity?
+                    Standard vector search pipelines fail in production: naive
+                    semantic embeddings miss precise technical keywords,
+                    geometric proximity rarely correlates perfectly with topical
+                    relevance, and engineering teams select vector
+                    infrastructure based on industry hype rather than empirical
+                    benchmarks.
                   </dd>
                 </div>
                 <div>
                   <dt>What I built</dt>
                   <dd>
-                    A <b>6-endpoint retrieval API</b> benchmarking Pinecone vs
-                    pgvector, manual vs LangChain RAG, semantic vs hybrid
-                    search, and vector retrieval vs cross-encoder reranking —
-                    across <b>2,974 chunks from 52 Wikipedia articles</b>.
+                    A production-grade distributed retrieval architecture
+                    managing 2,974 document chunks across two vector topologies:
+                    <b>PostgreSQL/pgvector (HNSW Indexing)</b> and
+                    <b>Pinecone Serverless</b>. Engineered a multi-stage
+                    retrieval pipeline fusing dense vector embeddings with
+                    sparse <b>BM25 token frequencies</b> via scale-agnostic
+                    <b>Reciprocal Rank Fusion (RRF)</b>, backed by a neural
+                    <b>Cross-Encoder reranking layer</b> (<code
+                      class="inline-code"
+                      >ms-marco-MiniLM</code
+                    >) for joint-attention sequence scoring.
                   </dd>
                 </div>
                 <div>
                   <dt>Outcome</dt>
                   <dd>
-                    Reciprocal Rank Fusion over BM25 sparse + pgvector dense
-                    retrieval <b>empirically beat pure semantic search</b> on
-                    exact technical keyword queries.
+                    Achieved complete semantic blind-spot elimination surfacing
+                    highly relevant contextual chunks that raw vector search
+                    underrated from position 6 to position 1. Enforced
+                    deterministic citation constraints on GPT-4o-mini, creating
+                    a <b>zero-hallucination</b> boundary that gracefully
+                    degrades when handling out-of-knowledge queries.
                   </dd>
                 </div>
               </dl>
               <div class="chips">
-                <span class="chip">FastAPI</span><span class="chip">OpenAI</span
-                ><span class="chip">Pinecone</span
-                ><span class="chip">pgvector</span
-                ><span class="chip">LangChain</span
-                ><span class="chip">BM25 / RRF</span>
+                <span class="chip">pgvector (HNSW)</span
+                ><span class="chip">Pinecone Serverless</span
+                ><span class="chip">Cross-Encoder Reranking</span
+                ><span class="chip">Reciprocal Rank Fusion</span>
               </div>
               <div class="panel-links">
                 <a
-                  href="https://github.com/prem-goswami"
+                  href="https://github.com/prem-goswami/advanced-rag-pipeline"
                   target="_blank"
                   rel="noopener"
                   data-cursor
@@ -1738,97 +1757,99 @@
 
             <article class="panel -ai" data-view>
               <span class="panel-idx" aria-hidden="true">02</span>
-              <span class="panel-tag">AI / Automation</span>
-              <h3>Integrated LLM Workflow Service</h3>
+              <span class="panel-tag">AI / Systems Orchestration</span>
+              <h3>Integrated LLM workflow service</h3>
               <dl>
                 <div>
                   <dt>Problem</dt>
                   <dd>
-                    LLM-powered automations die the moment a provider hiccups.
-                    Real users need workflows that degrade gracefully, not fail
-                    loudly.
+                    Fragmented job application tracking causes severe data
+                    friction, while cloud-hosted automation platforms impose
+                    restrictive token costs and lack the native semantic
+                    intelligence to process raw, unpredictable user inputs.
                   </dd>
                 </div>
                 <div>
                   <dt>What I built</dt>
                   <dd>
-                    A full-stack AI workflow automation service on the
-                    <b>Gemini API</b> using
-                    <b>Model Context Protocol (MCP) concepts</b> and resilient
-                    fallback orchestration, packaged as a Vite/React app with a
-                    Manifest V3 extension surface.
+                    A production-hardened, multi-stage
+                    <b>n8n workflow orchestration engine</b> containerized via
+                    <b>Docker</b>. I engineered an asynchronous webhook
+                    ingestion gateway to process live
+                    <b>WhatsApp Cloud API</b> traffic, routing payloads through
+                    a complex conditional logic matrix. The pipeline leverages
+                    <b>Google Gemini AI</b> with stateful memory nodes to
+                    dynamically parse unformatted natural language streams into
+                    structured, strictly validated JSON for atomic database
+                    updates via the Google Sheets API.
                   </dd>
                 </div>
                 <div>
                   <dt>Outcome</dt>
                   <dd>
-                    <b>99.8% workflow automation uptime</b> across real user
-                    interactions.
+                    A fully autonomous, zero-cost semantic automation system
+                    that abstracts complex database interactions behind an
+                    instant conversational UI, showcasing deep mastery over
+                    event-driven architecture, API routing, and system
+                    isolation.
                   </dd>
                 </div>
               </dl>
               <div class="chips">
-                <span class="chip">Vite</span><span class="chip">React</span
-                ><span class="chip">Manifest V3</span
-                ><span class="chip">Gemini API</span
-                ><span class="chip">MCP</span>
+                <span class="chip">n8n Logic Engine</span
+                ><span class="chip">Docker Containers</span
+                ><span class="chip">Gemini AI Agent</span
+                ><span class="chip">Asynchronous Webhooks</span>
               </div>
               <div class="panel-links">
                 <a
-                  href="https://github.com/prem-goswami"
+                  href="https://github.com/prem-goswami/ApplicationTracker-N8N"
                   target="_blank"
                   rel="noopener"
                   data-cursor
                   >Code ↗</a
-                ><a
-                  href="https://agent-service-backend-production.up.railway.app/docs"
-                  target="_blank"
-                  rel="noopener"
-                  data-cursor
-                  >Live Demo ↗</a
                 >
               </div>
             </article>
 
-            <article class="panel -ai" data-view>
-              <span class="panel-idx" aria-hidden="true">02</span>
-              <span class="panel-tag">AI / Backend Engineering</span>
-              <h3>Agent Orchestration Microservice</h3>
+            <article class="panel" data-view>
+              <span class="panel-idx" aria-hidden="true">03</span>
+              <span class="panel-tag">AI / Backend Architecture</span>
+              <h3>Multi-Persona Conversational AI Service</h3>
               <dl>
                 <div>
                   <dt>Problem</dt>
                   <dd>
-                    Client-side AI integrations often suffer from browser
-                    bottlenecking and fragile API connections. Real-time
-                    algorithmic mentorship requires a centralized backend to
-                    handle heavy state management and degrade gracefully during
-                    provider outages.
+                    Standard LLM integrations are highly vulnerable to
+                    instruction hijacking, lack state isolation across
+                    multi-turn sessions, and run completely blind to
+                    transactional API costs.
                   </dd>
                 </div>
                 <div>
                   <dt>What I built</dt>
                   <dd>
-                    A robust <b>FastAPI</b> orchestration layer powering a
-                    Manifest V3 extension. I engineered a resilient
-                    <b>Gemini API</b> integration featuring automated fallback
-                    logic, structured prompt routing, and
-                    <b>Model Context Protocol (MCP)</b> standards to securely
-                    process and deliver guidance.
+                    An asynchronous <b>FastAPI gateway</b> orchestrating
+                    <b>GPT-4o-mini</b> via a zero-overhead runtime state
+                    machine. Engineered an enterprise prompt-defense pipeline
+                    featuring deterministic XML injection isolation, dynamic
+                    multishot few-shot context priming, and real-time token
+                    tracking telemetry.
                   </dd>
                 </div>
                 <div>
                   <dt>Outcome</dt>
                   <dd>
-                    Offloaded 100% of LLM reasoning from the client, achieving
-                    <b>99.8% API uptime</b> and delivering zero-jank,
-                    context-aware algorithmic mentorship to end users.
+                    A secure, production-hardened API delivering flawless
+                    behavioral persona switching with a micro-USD cost
+                    estimation model executed on every conversation turn.
                   </dd>
                 </div>
               </dl>
               <div class="chips">
                 <span class="chip">FastAPI</span><span class="chip">Python</span
-                ><span class="chip">Gemini API</span
-                ><span class="chip">MCP</span><span class="chip">Pydantic</span>
+                ><span class="chip">Asynchronous I/O</span
+                ><span class="chip">LLM Telemetry</span>
               </div>
               <div class="panel-links">
                 <a
@@ -1848,37 +1869,49 @@
             </article>
 
             <article class="panel" data-view>
-              <span class="panel-idx" aria-hidden="true">05</span>
-              <span class="panel-tag">Craft / Motion</span>
+              <span class="panel-idx" aria-hidden="true">04</span>
+              <span class="panel-tag"
+                >Creative Engineering / UI Architecture</span
+              >
               <h3>Animated Website</h3>
               <dl>
                 <div>
                   <dt>Problem</dt>
                   <dd>
-                    Award-style scroll experiences look effortless and are
-                    anything but — timing, pinning, and performance all have to
-                    hold together.
+                    Complex, award-style scroll experiences frequently drop
+                    frames, trigger layout thrashing, and fail on low-power
+                    mobile GPUs due to unoptimized paint cycles and unthrottled
+                    DOM event handling.
                   </dd>
                 </div>
                 <div>
                   <dt>What I built</dt>
                   <dd>
-                    A <b>Zentry-inspired</b> site in React + GSAP:
-                    scroll-adaptive navigation, interactive Bento cards, and
-                    engineered scroll-triggered transitions.
+                    A high-performance cinematic single-page web application
+                    leveraging <b>React</b> and <b>GSAP (ScrollTrigger)</b>. I
+                    engineered a fluid interaction layer featuring
+                    hardware-accelerated 3D transforms, custom bento-grid
+                    components, and state-isolated animation boundaries that
+                    decouple intense visual rendering from React's virtual DOM
+                    re-render lifecycle.
                   </dd>
                 </div>
                 <div>
                   <dt>Outcome</dt>
                   <dd>
-                    Production-grade scroll choreography — the same discipline
-                    behind the site you're reading now.
+                    Flawless scroll orchestration executing at a locked
+                    <b>60 FPS</b> across variable refresh-rate viewports,
+                    demonstrating premium-grade creative front-end development
+                    that maximizes asset compression and viewport rendering
+                    efficiency.
                   </dd>
                 </div>
               </dl>
               <div class="chips">
-                <span class="chip">React</span><span class="chip">GSAP</span
-                ><span class="chip">ScrollTrigger</span>
+                <span class="chip">React</span
+                ><span class="chip">GSAP Core</span
+                ><span class="chip">ScrollTrigger</span
+                ><span class="chip">Motion Design</span>
               </div>
               <div class="panel-links">
                 <a
@@ -1897,146 +1930,54 @@
               </div>
             </article>
 
-            <article class="panel" data-view>
-              <span class="panel-idx" aria-hidden="true">04</span>
-              <span class="panel-tag">Product / Media</span>
-              <h3>Movies</h3>
+            <article class="panel -ai" data-view>
+              <span class="panel-idx" aria-hidden="true">05</span>
+              <span class="panel-tag">AI / Product Architecture</span>
+              <h3>Algorithmic Mentor</h3>
               <dl>
                 <div>
                   <dt>Problem</dt>
                   <dd>
-                    Movie discovery UIs get sluggish fast once live API data,
-                    filtering, and state pile up.
+                    Standard LLM coding assistants ruin the learning curve by
+                    instantly dumping full solutions. Furthermore, client-side
+                    AI integrations are notoriously brittle, failing loudly
+                    during API rate limits or model provider outages.
                   </dd>
                 </div>
                 <div>
                   <dt>What I built</dt>
                   <dd>
-                    A discovery platform in React + Vite with
-                    <b>real-time API integration</b> and deliberate state
-                    management to keep search and browse responsive.
+                    A <b>Manifest V3</b> extension utilizing <b>React</b> and
+                    the <b>Gemini API</b>. I engineered strict pedagogical
+                    prompt guardrails to enforce a "hints-only" mentor persona,
+                    orchestrated by a highly resilient background service worker
+                    featuring dynamic model discovery, stateful fallback
+                    routing, and automatic retry classification.
                   </dd>
                 </div>
                 <div>
                   <dt>Outcome</dt>
                   <dd>
-                    A fully responsive UI that stays fast under live data — no
-                    jank on filter, search, or paginate.
+                    A production-grade, zero-context-switch learning environment
+                    that improves user problem-solving without leaking code,
+                    showcasing deep mastery over LLM reliability and edge-case
+                    edge-case management.
                   </dd>
                 </div>
               </dl>
               <div class="chips">
-                <span class="chip">React</span><span class="chip">Vite</span
-                ><span class="chip">JavaScript</span
-                ><span class="chip">CSS</span>
+                <span class="chip">React</span
+                ><span class="chip">Manifest V3</span
+                ><span class="chip">Gemini API</span
+                ><span class="chip">LLM Routing</span>
               </div>
               <div class="panel-links">
                 <a
-                  href="https://github.com/prem-goswami/Movies"
+                  href="https://github.com/prem-goswami/DSA-buddy"
                   target="_blank"
                   rel="noopener"
                   data-cursor
                   >Code ↗</a
-                ><a
-                  href="https://trendingmoviesreact.netlify.app/auth"
-                  target="_blank"
-                  rel="noopener"
-                  data-cursor
-                  >Live Demo ↗</a
-                >
-              </div>
-            </article>
-
-            <article class="panel" data-view>
-              <span class="panel-idx" aria-hidden="true">03</span>
-              <span class="panel-tag">Product / Maps</span>
-              <h3>Cafe Finder</h3>
-              <dl>
-                <div>
-                  <dt>Problem</dt>
-                  <dd>
-                    Finding a good cafe nearby means juggling maps, reviews, and
-                    bookmarks across three apps.
-                  </dd>
-                </div>
-                <div>
-                  <dt>What I built</dt>
-                  <dd>
-                    A React + Vite app on the <b>Google Places / Maps APIs</b>:
-                    real-time location search, favorites, and turn-by-turn
-                    navigation handoff in one flow.
-                  </dd>
-                </div>
-                <div>
-                  <dt>Outcome</dt>
-                  <dd>
-                    Search-to-directions in a single interface, with saved
-                    favorites persisting across sessions.
-                  </dd>
-                </div>
-              </dl>
-              <div class="chips">
-                <span class="chip">React</span><span class="chip">Vite</span
-                ><span class="chip">Google Places API</span
-                ><span class="chip">Maps API</span>
-              </div>
-              <div class="panel-links">
-                <a
-                  href="https://github.com/prem-goswami/Cafe-Finder"
-                  target="_blank"
-                  rel="noopener"
-                  data-cursor
-                  >Code ↗</a
-                >
-              </div>
-            </article>
-
-            <article class="panel" data-view>
-              <span class="panel-idx" aria-hidden="true">06</span>
-              <span class="panel-tag">Product / Commerce</span>
-              <h3>Crown Clothing</h3>
-              <dl>
-                <div>
-                  <dt>Problem</dt>
-                  <dd>
-                    E-commerce is the full-stack gauntlet: auth, cart state, and
-                    checkout have to work together or nothing does.
-                  </dd>
-                </div>
-                <div>
-                  <dt>What I built</dt>
-                  <dd>
-                    A complete e-commerce app in React with
-                    <b
-                      >authentication, persistent cart, and a full checkout
-                      flow</b
-                    >.
-                  </dd>
-                </div>
-                <div>
-                  <dt>Outcome</dt>
-                  <dd>
-                    End-to-end purchase path from sign-in to order confirmation.
-                  </dd>
-                </div>
-              </dl>
-              <div class="chips">
-                <span class="chip">React</span><span class="chip">Auth</span
-                ><span class="chip">Cart / Checkout</span>
-              </div>
-              <div class="panel-links">
-                <a
-                  href="https://github.com/prem-goswami/crown-clothing"
-                  target="_blank"
-                  rel="noopener"
-                  data-cursor
-                  >Code ↗</a
-                ><a
-                  href="https://corwn-clothing.netlify.app/sign-in"
-                  target="_blank"
-                  rel="noopener"
-                  data-cursor
-                  >Live Demo ↗</a
                 >
               </div>
             </article>
@@ -2361,6 +2302,11 @@
           wrap.scrollLeft = (slider.value / 1000) * maxScroll();
         });
 
+        // native link-drag would swallow clicks that move a few px — disable it in the rail
+        wrap.addEventListener("dragstart", function (e) {
+          e.preventDefault();
+        });
+
         // drag-to-scroll with mouse
         let down = false,
           startX = 0,
@@ -2372,13 +2318,17 @@
           moved = false;
           startX = e.clientX;
           startLeft = wrap.scrollLeft;
-          wrap.classList.add("dragging");
+          // NOTE: no 'dragging' class here — links must stay clickable on a plain press
         });
         window.addEventListener("pointermove", (e) => {
           if (!down) return;
           const dx = e.clientX - startX;
-          if (Math.abs(dx) > 4) moved = true;
-          wrap.scrollLeft = startLeft - dx;
+          if (!moved && Math.abs(dx) > 10) {
+            // engage drag only after real movement
+            moved = true;
+            wrap.classList.add("dragging");
+          }
+          if (moved) wrap.scrollLeft = startLeft - dx;
         });
         window.addEventListener("pointerup", () => {
           down = false;
